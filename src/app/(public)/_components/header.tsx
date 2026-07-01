@@ -13,13 +13,15 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { LogIn, Menu } from "lucide-react";
 
 
 
 export function Header() {
 
   const [isOpen, setIsOpen] = useState(false);
+
+  const session = null
 
   const navItems = [
     { href: "#", label: "Profissionais" },
@@ -35,12 +37,25 @@ export function Header() {
         className="text-black bg-transparent hover:bg-transparent shadow-none"
        
       >
-        <Link href={item.href}>
+        <Link href={item.href} className="flex items-center gap-2 text-black">
           {item.label}
         </Link>
 
       </Button>
     ))}
+    {session ? (
+      <Link 
+        href="/dashboard"
+        className=" flex items-center text-black justify-center gap-2"
+      >
+        Painel da Clinica
+      </Link>
+    ) : (
+      <Button >
+        <LogIn />
+        Fazer login
+      </Button>
+    )}
     </>
   );
 
